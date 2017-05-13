@@ -6,8 +6,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
+var EventController = require('./src/eventController')
+var Metronome = require('./src/metronome')
+var BpmController = require('./src/bpmController')
 
 var app = express();
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -38,5 +42,10 @@ app.use(function(err, req, res, next) {
 });
 
 app.io = require('socket.io')();
+app.timbre = require('timbre');
+app.eventController = EventController(app.io);
+
+Metronome(app.eventController).start()
+BpmController(app.eventController)
 
 module.exports = app;
