@@ -1,4 +1,4 @@
-var senseJoystick = require('node-sense-hat').Joystick;
+var senseJoystick = require('sense-joystick')
 
 function JoystickController(io) {
   io.on('connection', function (socket) {

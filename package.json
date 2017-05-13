@@ -27,6 +27,7 @@
     "morgan": "1.8.1",
     "node-sense-hat": "0.0.2",
     "pi-pins": "1.0.2",
+    "sense-joystick": "0.0.2",
     "serve-favicon": "2.4.2",
     "socket.io": "2.0.1",
     "timbre": "14.11.25"
