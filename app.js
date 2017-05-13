@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var Metronome = require('./src/metronome')
 var BpmController = require('./src/bpmController')
+var ButtonPressController = require('./src/buttonPressController')
 
 var app = express();
 
@@ -45,5 +46,6 @@ app.timbre = require('timbre');
 
 Metronome(app.io).start()
 BpmController(app.io)
+ButtonPressController(app.io)
 
 module.exports = app;
