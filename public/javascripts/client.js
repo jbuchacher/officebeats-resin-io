@@ -7,3 +7,7 @@ socket.on('bpm', function() {
     this.pause();
   }).bang().play();
 })
+
+socket.on('hihat', function()
+  {T("sin", {freq:880}).bang().play();
+})
