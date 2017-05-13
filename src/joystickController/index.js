@@ -22,8 +22,8 @@ function JoystickController(io) {
           var instrument = directionToInstrumentMapping[direction]
           console.log("emitting: ", instrument)
           io.emit(instrument)
-	}
-    });
+	});
+      });
   });
 }
 
