@@ -8,7 +8,6 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var Metronome = require('./src/metronome')
 var BpmController = require('./src/bpmController')
-var ButtonPressController = require('./src/buttonPressController')
 var JoystickController = require('./src/joystickController')
 
 var app = express();
@@ -42,15 +41,14 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.io = require('socket.io')();
-app.ioClient = require('socket.io-client')(process.env['SOCKET_IO_SERVER_ADDRESS'])
-
-app.timbre = require('timbre');
-
-Metronome(app.io).start()
-BpmController(app.io)
-
-ButtonPressController(app.ioClient)
-JoystickController(app.ioClient)
+console.log("ENV*****: ", process.env)
+if (process.env['SPEAKER_SERVER'] === 'true') {
+  app.io = require('socket.io')();
+  Metronome(app.io).start()
+  BpmController(app.io)
+} else {
+  app.ioClient = require('socket.io-client')("http://192.168.78.254:3000")
+  JoystickController(app.ioClient)
+}
 
 module.exports = app;

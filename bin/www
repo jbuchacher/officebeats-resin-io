@@ -33,8 +33,11 @@ server.on('listening', onListening);
  * Either Listen or connect to socketIO
  */
 
-if (process.env['SPEAKER_SERVER']) {
+if (process.env['SPEAKER_SERVER'] === 'true') {
+    console.log("starting speaker server")
     app.io.listen(server);
+} else {
+    console.log("NOT starting speaker server because Im not the speaker server")
 }
 
 /**
