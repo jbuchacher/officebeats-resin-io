@@ -23,7 +23,9 @@ function JoystickController(io) {
           console.log("emitting: ", instrument)
           io.emit(instrument)
 	});
-      });
+      }).catch((e) => {
+        console.log("Didn't find a PI hat")
+      })
   });
 }
 
