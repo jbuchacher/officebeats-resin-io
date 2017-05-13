@@ -8,7 +8,7 @@ socket.on('bpm', function() {
   }).bang().play();
 })
 
-socket.on('hihat', function()
+socket.on('hihat', function() {
   var sine1 = T("sin", {freq:890, mul:0.5});
   var sine2 = T("sin", {freq:260, mul:1.0});
 
