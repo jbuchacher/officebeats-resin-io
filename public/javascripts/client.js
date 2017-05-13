@@ -1,6 +1,9 @@
-console.log(io)
-console.log(window.SOCKET_IO_SERVER_ADDRESS)
 var socket = io.connect(window.SOCKET_IO_SERVER_ADDRESS);
 socket.on('bpm', function() {
-  console.log("yo")
+  var sine1 = T("sin", {freq:440, mul:0.5});
+  var sine2 = T("sin", {freq:660, mul:0.5});
+
+  T("perc", {r:500}, sine1, sine2).on("ended", function() {
+    this.pause();
+  }).bang().play();
 })

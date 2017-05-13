@@ -1,4 +1,4 @@
-function Metronome(eventController) {
+function Metronome(io) {
   var timer;
 
   function start() {
@@ -14,7 +14,8 @@ function Metronome(eventController) {
   }
 
   function tick() {
-    eventController.emit('bpm')
+    console.log("bpm sent")
+    io.emit('bpm')
   }
 
   return {

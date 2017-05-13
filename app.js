@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var EventController = require('./src/eventController')
 var Metronome = require('./src/metronome')
 var BpmController = require('./src/bpmController')
 
@@ -43,9 +42,8 @@ app.use(function(err, req, res, next) {
 
 app.io = require('socket.io')();
 app.timbre = require('timbre');
-app.eventController = EventController(app.io);
 
-Metronome(app.eventController).start()
-BpmController(app.eventController)
+Metronome(app.io).start()
+BpmController(app.io)
 
 module.exports = app;

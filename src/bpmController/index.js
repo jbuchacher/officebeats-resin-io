@@ -1,7 +1,13 @@
-function BpmController(eventController, timbre) {
-  eventController.use(function(socket, next){
-    console.log(socket)
-    next();
+function BpmController(io) {
+  io.on('connection', function (socket) {
+    console.log("Connected: ", socket)
+    io.sockets.on('bpm', function () {
+      console.log("bpm received");
+    });
+
+    io.on('bpm', function () {
+      console.log("bpm received");
+    });
   });
 }
 
