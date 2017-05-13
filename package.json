@@ -1,0 +1,31 @@
+{
+  "name": "officebeats-resin-io",
+  "version": "1.0.0",
+  "description": "Make beats in the office with your coworkers, powered by resin.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbuchacher/officebeats-resin-io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jbuchacher/officebeats-resin-io/issues"
+  },
+  "homepage": "https://github.com/jbuchacher/officebeats-resin-io#readme",
+  "dependencies": {
+    "body-parser": "1.17.1",
+    "cookie-parser": "1.4.3",
+    "debug": "2.6.3",
+    "express": "4.15.2",
+    "express": "4.15.2",
+    "jade": "1.11.0",
+    "morgan": "1.8.1",
+    "serve-favicon": "2.4.2",
+    "socket.io": "2.0.1"
+  }
+}
