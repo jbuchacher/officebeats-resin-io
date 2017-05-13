@@ -33,7 +33,7 @@ server.on('listening', onListening);
  * Either Listen or connect to socketIO
  */
 
-if (process.env[SPEAKER_SERVER]) {
+if (process.env['SPEAKER_SERVER']) {
     app.io.listen(server);
 } else {
     app.io.connect(process.env['SOCKET_IO_SERVER_ADDRESS'])
