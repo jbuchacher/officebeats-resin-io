@@ -1,6 +1,10 @@
 var senseJoystick = require('sense-joystick')
 
 function JoystickController(io) {
+  if (process.env['SPEAKER_SERVER'] === true) {
+    return;
+  }
+
   senseJoystick.getJoystick()
                .then((joystick) => {
 	         joystick.on('press', (direction) => {

@@ -43,11 +43,14 @@ app.use(function(err, req, res, next) {
 });
 
 app.io = require('socket.io')();
+app.ioClient = require('socket.io-client')(process.env['SOCKET_IO_SERVER_ADDRESS'])
+
 app.timbre = require('timbre');
 
 Metronome(app.io).start()
 BpmController(app.io)
-ButtonPressController(app.io)
-JoystickController(app.io)
+
+ButtonPressController(app.ioClient)
+JoystickController(app.ioClient)
 
 module.exports = app;

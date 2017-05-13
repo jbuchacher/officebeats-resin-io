@@ -35,8 +35,6 @@ server.on('listening', onListening);
 
 if (process.env['SPEAKER_SERVER']) {
     app.io.listen(server);
-} else {
-    app.io.connect(process.env['SOCKET_IO_SERVER_ADDRESS'])
 }
 
 /**
