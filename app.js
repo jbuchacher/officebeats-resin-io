@@ -47,8 +47,7 @@ if (process.env['SPEAKER_SERVER'] === 'true') {
   Metronome(app.io).start()
   BpmController(app.io)
 } else {
-  app.ioClient = require('socket.io-client')("http://192.168.78.254:3000")
-  JoystickController(app.ioClient)
+  JoystickController()
 }
 
 module.exports = app;

@@ -1,7 +1,10 @@
 var senseJoystick = require('sense-joystick')
+var socketClient = require('socket.io-client')
 
-function JoystickController(io) {
-  io.on('connect', function () {
+function JoystickController() {
+  var socket = socketClient("http://192.168.78.254:3000")
+  socket.on('connect', function () {
+    console.log("CONNECTED")
     senseJoystick.getJoystick()
                  .then((joystick) => {
 	           joystick.on('press', (direction) => {
@@ -17,7 +20,7 @@ function JoystickController(io) {
 
                      var instrument = directionToInstrumentMapping[direction]
                      console.log("emitting: ", instrument)
-                     io.emit(instrument)
+                     socket.emit(instrument)
 	           });
                  }).catch((e) => {
                    console.log("Didn't find a PI hat")
