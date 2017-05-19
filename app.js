@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var Metronome = require('./src/metronome')
+var ClientController = require('./src/clientController')
 var BpmController = require('./src/bpmController')
 var JoystickController = require('./src/joystickController')
 
@@ -41,13 +42,17 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-console.log("ENV*****: ", process.env)
-if (process.env['SPEAKER_SERVER'] === 'true') {
+app.isSpeakerServer = true //!!process.env['SPEAKER_SERVER']
+
+if (app.isSpeakerServer) {
   app.io = require('socket.io')();
   Metronome(app.io).start()
-  BpmController(app.io)
-} else {
-  JoystickController()
 }
+
+app.ioClient = require("socket.io-client");
+ClientController(app.ioClient);
+BpmController(app.ioClient)
+JoystickController(app.ioClient);
+
 
 module.exports = app;

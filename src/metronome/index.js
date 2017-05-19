@@ -4,7 +4,7 @@ function Metronome(io) {
   function start() {
     stop()
 
-    timer = setInterval(tick, 1000)
+    timer = setInterval(tick(io), 1000)
   }
 
   function stop() {
@@ -13,9 +13,11 @@ function Metronome(io) {
     }
   }
 
-  function tick() {
-    console.log("bpm sent")
-    io.emit('bpm')
+  function tick(io) {
+    return function() {
+      io.emit('bpm')
+      console.log("bpm sent")
+    }
   }
 
   return {
